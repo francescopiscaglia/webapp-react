@@ -8,6 +8,7 @@ export default function SingleMovie() {
     // logic
     const { id } = useParams()
     const [reviews, setReviews] = useState([]);
+    const [movie, setMovie] = useState([]);
 
     const url = `http://localhost:3009/api/films/${id}`;
 
@@ -109,8 +110,8 @@ export default function SingleMovie() {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                setReviews(data.review)
+                setReviews(data.review);
+                setMovie(data.movie);
             })
             .catch(err => console.error(err))
     };
@@ -122,7 +123,7 @@ export default function SingleMovie() {
     // render
     return (
         <>
-            <Banner pageTitle="Movie title" pageSubtitle="By Author name" pageDescription="Lorem ipsum dolor" />
+            <Banner pageTitle={movie.title} pageSubtitle={movie.director} pageDescription={movie.abstract} />
 
             {/* reviews */}
             <section className="reviews mb-5">
