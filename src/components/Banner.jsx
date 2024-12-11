@@ -1,4 +1,4 @@
-export default function Banner({ pageTitle, pageSubtitle, pageDescription }) {
+export default function Banner({ pageTitle, pageSubtitle, pageDescription, children }) {
     return (
         <div className="banner bg-primary text-white py-4 mb-5">
             <div className="container-lg">
@@ -7,6 +7,7 @@ export default function Banner({ pageTitle, pageSubtitle, pageDescription }) {
                 <p className="lead">
                     {pageDescription}
                 </p>
+                {children}
             </div>
         </div>
     )
