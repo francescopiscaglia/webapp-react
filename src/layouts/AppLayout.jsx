@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import AppHeader from "../components/AppHeader";
+import AppFooter from "../components/AppFooter";
 
 export default function AppLayout() {
     return (
@@ -10,9 +11,7 @@ export default function AppLayout() {
                 <Outlet />
             </main>
 
-            <footer>
-                <h5>footer</h5>
-            </footer>
+            <AppFooter />
         </>
     )
 }
