@@ -3,7 +3,7 @@ export default function Banner({ pageTitle, pageSubtitle, pageDescription, child
         <div className="banner bg-dark text-white py-4 mb-5">
             <div className="container-lg">
                 <h1>{pageTitle}</h1>
-                <h3 className="text-muted">{pageSubtitle}</h3>
+                <h3 className="text-secondary">{pageSubtitle}</h3>
                 <p className="lead">
                     {pageDescription}
                 </p>

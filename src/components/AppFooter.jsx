@@ -6,7 +6,7 @@ export default function AppFooter() {
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3">
 
                         <div className="col">
-                            <h4>Bool Movies</h4>
+                            <h5>Bool Movies</h5>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit mollitia ipsa quo quis enim nesciunt quas doloremque placeat repellat repudiandae, debitis velit nobis distinctio officia sapiente qui adipisci sunt ullam?</p>
 
                             <div className="social d-flex">
@@ -16,8 +16,8 @@ export default function AppFooter() {
                             </div>
                         </div>
 
-                        <div className="col">
-                            <h4>Menu</h4>
+                        <div className="col text-center">
+                            <h5>Menu</h5>
                             <ul className="list-unstyled">
                                 <li><a href="" className="text-decoration-none">Link 1</a></li>
                                 <li><a href="" className="text-decoration-none">Link 2</a></li>
@@ -28,8 +28,8 @@ export default function AppFooter() {
 
                         </div>
 
-                        <div className="col">
-                            <h4>Legal stuff</h4>
+                        <div className="col text-center">
+                            <h5>Legal stuff</h5>
                             <ul className="list-unstyled">
                                 <li><a href="" className="text-decoration-none">Link 1</a></li>
                                 <li><a href="" className="text-decoration-none">Link 2</a></li>

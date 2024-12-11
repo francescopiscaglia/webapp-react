@@ -1,13 +1,17 @@
 import { useParams } from "react-router-dom";
 import Banner from "../components/Banner";
 import ReviewCard from "../components/ReviewCard";
+import { useEffect, useState } from "react";
 
 export default function SingleMovie() {
 
     // logic
     const { id } = useParams()
+    const [reviews, setReviews] = useState([]);
 
-    const reviews = [
+    const url = `http://localhost:3009/api/films/${id}`;
+
+    /* const reviews = [
         {
             id: 1,
             movie_id: 1,
@@ -98,8 +102,22 @@ export default function SingleMovie() {
             created_at: "2024-12-11T09:45:00Z",
             updated_at: "2024-12-11T09:45:00Z",
         }
-    ];
+    ]; */
 
+    // fetch
+    function fetchData(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setReviews(data.review)
+            })
+            .catch(err => console.error(err))
+    };
+
+    useEffect(() => {
+        fetchData(url)
+    }, [], [url])
 
     // render
     return (
