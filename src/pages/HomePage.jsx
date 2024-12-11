@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import Banner from "../components/Banner";
 import MovieCard from "../components/MovieCard";
 
 export default function HomePage() {
     // logic
-    const movies = [
+    const [movies, setMovies] = useState([])
+    /* const movies = [
         {
             id: 1,
             title: "Inception",
@@ -114,7 +116,26 @@ export default function HomePage() {
             created_at: "2024-12-10T10:09:00Z",
             updated_at: "2024-12-10T10:09:00Z",
         }
-    ];
+    ]; */
+
+    const url = "http://localhost:3009/api/films";
+
+    // fetch
+    function fetchData(url) {
+        fetch(url)
+            .then(response => response.json())
+            .then(response => {
+                setMovies(response.films)
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error)
+            });
+    }
+
+    // fetch when component is uploaded
+    useEffect(() => {
+        fetchData(url)
+    }, []);
 
 
 
@@ -126,12 +147,14 @@ export default function HomePage() {
             <div className="container mb-5">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
 
-                    {
+                    {movies ?
                         movies.map(movie => (
                             <div className="col" key={movie.id}>
                                 <MovieCard movie={movie} />
                             </div>
-                        ))
+                        )) : (
+                            <h1>Something went wrong 😫</h1>
+                        )
                     }
                 </div>
             </div>
