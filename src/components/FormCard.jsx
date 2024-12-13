@@ -8,6 +8,7 @@ export default function FormCard({ successFetch, setSuccessFetch }) {
     const [username, setUsername] = useState("");
     const [review, setReview] = useState("");
     const [vote, setVote] = useState(0);
+    const [error, setError] = useState("")
 
     // handleFromSubmit
     function handleFromSubmit(e) {
@@ -30,24 +31,31 @@ export default function FormCard({ successFetch, setSuccessFetch }) {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                setSuccessFetch(data.success)
+                if (data.success == true) {
+                    setSuccessFetch(data.success)
+                } else {
+                    setError("Something went wrong, try again")
+                }
             })
             .finally(() => {
                 setUsername("")
                 setReview("")
                 setVote(0)
 
-                handleFormToggle()
+                setTimeout(handleFormToggle, 3000)
+                handleErrorToogle()
             })
-
-        console.log(successFetch)
     };
 
 
     // toggle d-none
     function handleFormToggle() {
-        document.querySelector(".form-card").classList.toggle("d-none")
+        document.querySelector(".form-card").classList.toggle("d-none");
+    };
+
+    // toggle error
+    function handleErrorToogle() {
+        document.querySelector(".error-message").classList.toggle("d-none")
     }
 
 
@@ -95,8 +103,12 @@ export default function FormCard({ successFetch, setSuccessFetch }) {
                     {/* submit */}
                     <button
                         type="submit"
-                        className="btn btn-primary"
+                        className="btn btn-primary me-2"
                     >Send</button>
+
+                    <span className="error-message text-muted d-none">
+                        {error ? error : "Review added successfully"}
+                    </span>
 
                 </form>
             </div>
