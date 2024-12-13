@@ -1,4 +1,9 @@
+import { Link, useParams } from "react-router-dom"
+
 export default function MovieCard({ movie }) {
+
+    const id = movie.id
+
     return (
         <div className="card">
             <div className="card-body">
@@ -7,7 +12,7 @@ export default function MovieCard({ movie }) {
 
                 <p className="card-text my-2">{movie.abstract}</p>
 
-                <div className="details">
+                <div className="details mb-2">
                     <div className="genre">
                         <span className="text-muted">Genre:</span> <span>{movie.genre}</span>
                     </div>
@@ -15,7 +20,12 @@ export default function MovieCard({ movie }) {
                         <span className="text-muted">release year:</span> <span>{movie.release_year}</span>
                     </div>
                 </div>
+
+                <Link
+                    className="btn btn-sm btn-outline-primary"
+                    to={`/movie/${id}`}
+                >Reviews</Link>
             </div>
-        </div>
+        </div >
     )
 }
