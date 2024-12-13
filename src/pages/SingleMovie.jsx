@@ -11,6 +11,7 @@ export default function SingleMovie() {
     const [reviews, setReviews] = useState([]);
     const [movie, setMovie] = useState({});
     const [successFetch, setSuccessFetch] = useState(false);
+    const [deleteReviewStatus, setDeleteReviewStatus] = useState(false)
 
     const url = `http://localhost:3009/api/films/${id}`;
 
@@ -27,7 +28,7 @@ export default function SingleMovie() {
 
     useEffect(() => {
         fetchData(url)
-    }, [url, successFetch])
+    }, [url, successFetch, deleteReviewStatus])
 
 
     // render
@@ -43,7 +44,7 @@ export default function SingleMovie() {
 
                     {reviews ?
                         reviews.map(review => (
-                            <ReviewCard review={review} key={review.id} />
+                            <ReviewCard review={review} key={review.id} setDeleteReviewStatus={setDeleteReviewStatus} />
                         )) : (
                             <h1>Something went wrong 😫</h1>
                         )

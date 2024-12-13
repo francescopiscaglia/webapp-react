@@ -14,6 +14,7 @@ export default function FormCard({ successFetch, setSuccessFetch }) {
     function handleFromSubmit(e) {
         e.preventDefault()
 
+        // req body
         const formData = {
             name: username,
             text: review,
@@ -45,6 +46,9 @@ export default function FormCard({ successFetch, setSuccessFetch }) {
                 setTimeout(handleFormToggle, 3000)
                 handleErrorToogle()
             })
+
+        // default value at the end of the fetch
+        setSuccessFetch(false)
     };
 
 
