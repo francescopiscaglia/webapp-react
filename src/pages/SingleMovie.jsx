@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import Banner from "../components/Banner";
 import ReviewCard from "../components/ReviewCard";
 import { useEffect, useState } from "react";
+import FormCard from "../components/FormCard";
 
 export default function SingleMovie() {
 
@@ -9,6 +10,7 @@ export default function SingleMovie() {
     const { id } = useParams()
     const [reviews, setReviews] = useState([]);
     const [movie, setMovie] = useState({});
+    const [successFetch, setSuccessFetch] = useState(false);
 
     const url = `http://localhost:3009/api/films/${id}`;
 
@@ -25,14 +27,15 @@ export default function SingleMovie() {
 
     useEffect(() => {
         fetchData(url)
-    }, [url])
-
+    }, [url, successFetch])
 
 
     // render
     return (
         <>
             <Banner pageTitle={movie.title} pageSubtitle={movie.director} pageDescription={movie.abstract} />
+
+            <FormCard successFetch={successFetch} setSuccessFetch={setSuccessFetch} />
 
             {/* reviews */}
             <section className="reviews mb-5">
@@ -49,5 +52,5 @@ export default function SingleMovie() {
 
             </section>
         </>
-    )
-}
+    );
+};
