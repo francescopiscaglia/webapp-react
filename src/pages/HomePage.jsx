@@ -1,15 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 import Banner from "../components/Banner";
 import MovieCard from "../components/MovieCard";
-import Loader from "../components/loader";
 import GlobalContext from "../context/GlobalContext";
+import Loader from "../components/Loader";
 
 export default function HomePage() {
     // logic
     const [movies, setMovies] = useState([]);
-    const { loader, setLoader } = useContext(GlobalContext)
-
-    const url = "http://localhost:3009/api/films";
+    const { loader, setLoader, api_url } = useContext(GlobalContext)
 
     // fetch
     function fetchData(url) {
@@ -27,7 +25,7 @@ export default function HomePage() {
     // fetch when component is uploaded
     useEffect(() => {
         setLoader(true)
-        fetchData(url)
+        fetchData(api_url)
     }, []);
 
 

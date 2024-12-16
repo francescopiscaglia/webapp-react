@@ -11,9 +11,12 @@ function App() {
 
   const [loader, setLoader] = useState(false)
 
+  const api_url = "http://localhost:3009/api/films";
+
   const values = {
     loader,
-    setLoader
+    setLoader,
+    api_url
   }
 
   return (

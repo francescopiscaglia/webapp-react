@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import GlobalContext from "../context/GlobalContext"
 
-export default function FormCard({ successFetch, setSuccessFetch }) {
+export default function FormCard({ setSuccessFetch }) {
 
     // logic
     const { id } = useParams()
@@ -9,6 +10,9 @@ export default function FormCard({ successFetch, setSuccessFetch }) {
     const [review, setReview] = useState("");
     const [vote, setVote] = useState(0);
     const [error, setError] = useState("")
+
+    // context
+    const { api_url } = useContext(GlobalContext)
 
     // handleFromSubmit
     function handleFromSubmit(e) {
@@ -21,9 +25,8 @@ export default function FormCard({ successFetch, setSuccessFetch }) {
             vote
         };
 
-        const url = `http://localhost:3009/api/films/${id}/review`;
 
-        fetch(url, {
+        fetch(`${api_url}/${id}/review`, {
             method: "POST",
             body: JSON.stringify(formData),
             headers: {
@@ -37,8 +40,7 @@ export default function FormCard({ successFetch, setSuccessFetch }) {
                 } else {
                     setError("Something went wrong, try again")
                 }
-            })
-            .finally(() => {
+
                 setUsername("")
                 setReview("")
                 setVote(0)

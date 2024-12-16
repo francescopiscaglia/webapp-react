@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import Banner from "../components/Banner";
-import ReviewCard from "../components/ReviewCard";
 import FormCard from "../components/FormCard";
 import GlobalContext from "../context/GlobalContext";
 import Loader from "../components/Loader";
+import AllReviews from "../components/AllReviews";
 
 export default function SingleMovie() {
 
@@ -16,9 +16,9 @@ export default function SingleMovie() {
     const [deleteReviewStatus, setDeleteReviewStatus] = useState(false)
 
     // context
-    const { loader, setLoader } = useContext(GlobalContext)
+    const { loader, setLoader, api_url } = useContext(GlobalContext)
 
-    const url = `http://localhost:3009/api/films/${id}`;
+    const url = `${api_url}/${id}`;
 
     // fetch
     function fetchData(url) {
@@ -45,22 +45,9 @@ export default function SingleMovie() {
                 <>
                     <Banner pageTitle={movie.title} pageSubtitle={movie.director} pageDescription={movie.abstract} />
 
-                    <FormCard successFetch={successFetch} setSuccessFetch={setSuccessFetch} />
+                    <FormCard setSuccessFetch={setSuccessFetch} />
 
-                    {/* reviews */}
-                    <section className="reviews mb-5">
-                        <div className="container">
-
-                            {reviews ?
-                                reviews.map(review => (
-                                    <ReviewCard review={review} key={review.id} setDeleteReviewStatus={setDeleteReviewStatus} />
-                                )) : (
-                                    <h1>Something went wrong 😫</h1>
-                                )
-                            }
-                        </div>
-
-                    </section>
+                    <AllReviews reviews={reviews} setDeleteReviewStatus={setDeleteReviewStatus} />
                 </>
             )}
 
