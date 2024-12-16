@@ -10,6 +10,7 @@ export default function FormCard({ setSuccessFetch }) {
     const [review, setReview] = useState("");
     const [vote, setVote] = useState(0);
     const [error, setError] = useState("")
+    const [formDisplay, setFormDisplay] = useState(false)
 
     // context
     const { api_url } = useContext(GlobalContext)
@@ -46,7 +47,6 @@ export default function FormCard({ setSuccessFetch }) {
                 setVote(0)
 
                 setTimeout(handleFormToggle, 3000)
-                handleErrorToogle()
             })
 
         // default value at the end of the fetch
@@ -56,13 +56,8 @@ export default function FormCard({ setSuccessFetch }) {
 
     // toggle d-none
     function handleFormToggle() {
-        document.querySelector(".form-card").classList.toggle("d-none");
+        setFormDisplay(!formDisplay)
     };
-
-    // toggle error
-    function handleErrorToogle() {
-        document.querySelector(".error-message").classList.toggle("d-none")
-    }
 
 
     // render
@@ -74,7 +69,7 @@ export default function FormCard({ setSuccessFetch }) {
                 onClick={handleFormToggle}
             >Write a review</button>
 
-            <div className="form-card d-none">
+            <div className={`form-card ${formDisplay ? "" : "d-none"}`}>
                 <form onSubmit={handleFromSubmit}>
 
                     {/* username */}
@@ -111,11 +106,6 @@ export default function FormCard({ setSuccessFetch }) {
                         type="submit"
                         className="btn btn-primary me-2"
                     >Send</button>
-
-                    <span className="error-message text-muted d-none">
-                        {error ? error : "Review added successfully"}
-                    </span>
-
                 </form>
             </div>
         </section>

@@ -20,21 +20,24 @@ export default function SingleMovie() {
 
     const url = `${api_url}/${id}`;
 
-    // fetch
-    function fetchData(url) {
+    useEffect(() => {
+
+        // timeout for the loader
+        let loaderTimeout = setTimeout(() => setLoader(true), 300);
+
+        // fetch data
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 setReviews(data.review);
                 setMovie(data.movie);
-                setLoader(false)
             })
             .catch(err => console.error(err))
-    };
-
-    useEffect(() => {
-        setLoader(true)
-        fetchData(url)
+            .finally(() => {
+                // stop the loader
+                clearTimeout(loaderTimeout)
+                setLoader(false)
+            })
     }, [url, successFetch, deleteReviewStatus])
 
 
