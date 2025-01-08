@@ -1,0 +1,31 @@
+/* Color pelette */
+:root {
+    --var-header-bg: #1c1c1c;
+    --text-white: #f8f7ef;
+    --jumbtron-bg: #fcfbf3;
+}
+
+/* #region header */
+header {
+    background-color: var(--var-header-bg);
+
+    a {
+        color: var(--text-white);
+
+        span {
+            font-size: 12px;
+            padding-left: 15px;
+        }
+    }
+}
+
+/* #endregion header */
+
+/* #region main */
+main {
+    .banner {
+        background-color: var(--jumbtron-bg);
+    }
+}
+
+/* #endregion main */

@@ -23,7 +23,7 @@ export default function SingleMovie() {
     useEffect(() => {
 
         // timeout for the loader
-        let loaderTimeout = setTimeout(() => setLoader(true), 300);
+        let loaderTimeout = setTimeout(() => setLoader(true), 5000);
 
         // fetch data
         fetch(url)
