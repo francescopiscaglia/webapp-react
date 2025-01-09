@@ -4,6 +4,7 @@ import MovieCard from "../components/MovieCard";
 import GlobalContext from "../context/GlobalContext";
 import Loader from "../components/Loader";
 import SearchBar from "../components/searchBar";
+import PopUps from "../components/PopUps";
 
 export default function HomePage() {
     // logic
@@ -36,15 +37,24 @@ export default function HomePage() {
     // search bar
     function handleFormSubmit(e) {
         e.preventDefault();
+        ToggleDisplay()
 
         if (searchData === "") {
             setMovies(allMovies)
         } else {
-            const searchMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchData.toLowerCase()));
+            const searchMovies = allMovies.filter(movie => movie.title.toLowerCase().includes(searchData.toLowerCase()));
+
+            if (searchMovies.length === 0) {
+                setMovies([]);
+            }
             setMovies(searchMovies);
         };
     };
 
+
+    function ToggleDisplay() {
+        const DOMElement = document.querySelector(".pop-up").classList.toggle("d-none");
+    }
 
 
     // render
@@ -65,9 +75,13 @@ export default function HomePage() {
                     </Banner>
 
                     <div className="container mb-5 movie-list">
+
+                        {/* pop-up */}
+                        <PopUps />
+
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
 
-                            {movies ?
+                            {movies || movies.lenght === 0 ?
                                 movies.map(movie => (
                                     <div className="col" key={movie.id}>
                                         <MovieCard movie={movie} />

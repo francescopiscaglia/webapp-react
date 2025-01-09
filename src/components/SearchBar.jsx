@@ -9,7 +9,7 @@ export default function SearchBar({ handleFormSubmit, searchData, setSearchData 
                     placeholder="Search a film..."
                     aria-label="Search"
                     value={searchData}
-                    onChange={e => setSearchData(e.target.value)}
+                    onChange={(e) => setSearchData(e.target.value)}
                 />
                 <button className="btn btn-primary" type="submit">
                     <i className="bi bi-search"></i>
