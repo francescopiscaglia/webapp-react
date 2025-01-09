@@ -25,6 +25,15 @@ header {
 main {
     .banner {
         background-color: var(--jumbtron-bg);
+
+        form {
+            width: 600px;
+            margin: auto;
+
+            @media (max-width: 656px) {
+                width: 300px;
+            }
+        }
     }
 }
 

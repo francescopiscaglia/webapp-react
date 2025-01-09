@@ -3,10 +3,13 @@ import Banner from "../components/Banner";
 import MovieCard from "../components/MovieCard";
 import GlobalContext from "../context/GlobalContext";
 import Loader from "../components/Loader";
+import SearchBar from "../components/searchBar";
 
 export default function HomePage() {
     // logic
     const [movies, setMovies] = useState([]);
+    const [allMovies, setAllMovies] = useState([]);
+    const [searchData, setSearchData] = useState("");
     const { loader, setLoader, api_url } = useContext(GlobalContext)
 
     // fetch
@@ -15,6 +18,7 @@ export default function HomePage() {
             .then(response => response.json())
             .then(response => {
                 setMovies(response.films)
+                setAllMovies(response.films)
                 setLoader(false)
             })
             .catch(error => {
@@ -29,13 +33,31 @@ export default function HomePage() {
     }, []);
 
 
+    // search bar
+    function handleFormSubmit(e) {
+        e.preventDefault();
+
+        if (searchData === "") {
+            setMovies(allMovies)
+        } else {
+            const searchMovies = movies.filter(movie => movie.title.toLowerCase().includes(searchData.toLowerCase()));
+            setMovies(searchMovies);
+        };
+    };
+
+
 
     // render
     return (
         <>
             {loader ? <Loader /> : (
                 <>
-                    <Banner pageTitle="Bool Movies" pageDescription="Recensioni reali, scritte da persone reali." />
+                    <Banner pageTitle="Bool Movies" pageDescription="Let us know your opinion about your favorite movies!">
+
+                        {/* search bar */}
+                        <SearchBar handleFormSubmit={handleFormSubmit} searchData={searchData} setSearchData={setSearchData} />
+
+                    </Banner>
 
                     <div className="container mb-5">
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
