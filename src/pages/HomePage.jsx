@@ -57,9 +57,14 @@ export default function HomePage() {
                         {/* search bar */}
                         <SearchBar handleFormSubmit={handleFormSubmit} searchData={searchData} setSearchData={setSearchData} />
 
+                        <div className="rotating-shapes">
+                            <div className="shape square"></div>
+                            <div className="shape triangle"></div>
+                        </div>
+
                     </Banner>
 
-                    <div className="container mb-5">
+                    <div className="container mb-5 movie-list">
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
 
                             {movies ?
