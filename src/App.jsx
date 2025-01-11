@@ -15,11 +15,20 @@ function App() {
 
   const api_url = "http://localhost:3009/api/films";
 
+  const thumbnails = {
+    "inception": "/inception-l.webp",
+    "the godfather": "/the-godfather.avif",
+    "titanic": "/titanic.jpg",
+    "the matrix": "/the-matrix.webp",
+    "interstellar": "/interstellar.jpg"
+  };
+
   const values = {
     loader,
     setLoader,
-    api_url
-  }
+    api_url,
+    thumbnails
+  };
 
   return (
     <>

@@ -1,17 +1,21 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom"
+import GlobalContext from "../context/GlobalContext";
 
 export default function MovieCard({ movie }) {
 
+    const { thumbnails } = useContext(GlobalContext);
+    const moviesImgSrc = thumbnails[movie.title.toLowerCase()] || "";
+
     const id = movie.id
+
 
     return (
         <div className="card">
             <img
-                src={
-                    movie.title.toLowerCase() === "inception" ? "/inception-l.webp" : movie.title.toLowerCase() === "the godfather" ? "the-godfather.avif" : movie.title.toLowerCase() === "titanic" ? "titanic.jpg" : movie.title.toLowerCase() === "the matrix" ? "the-matrix.webp" : movie.title.toLowerCase() === "interstellar" ? "interstellar.jpg" : ""
-                }
+                src={moviesImgSrc}
                 className="card-img-top"
-                alt="..."
+                alt={movie.title}
             />
             <div className="card-body">
                 <h5 className="card-title">{movie.title}</h5>

@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import Banner from "../components/Banner";
 import FormCard from "../components/FormCard";
 import GlobalContext from "../context/GlobalContext";
 import Loader from "../components/Loader";
 import AllReviews from "../components/AllReviews";
+import MovieJumbotron from "../components/MovieJumbotron";
 
 export default function SingleMovie() {
 
@@ -38,7 +38,8 @@ export default function SingleMovie() {
                 clearTimeout(loaderTimeout)
                 setLoader(false)
             })
-    }, [url, successFetch, deleteReviewStatus])
+    }, [url, successFetch, deleteReviewStatus]);
+
 
 
     // render
@@ -46,26 +47,13 @@ export default function SingleMovie() {
         <>
             {loader ? <Loader /> : (
                 <>
-                    {/* <Banner pageTitle={movie.title} pageSubtitle={movie.director} pageDescription={movie.abstract} /> */}
-
-                    <div className="jumbotron py-4">
-                        <div className="card">
-                            <img src="/inception-l.webp" className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">{movie.title}</h5>
-                                <p className="card-text">{movie.director}</p>
-                                <p className="card-text">{movie.abstract}</p>
-                            </div>
-                        </div>
-                    </div>
-
+                    <MovieJumbotron movie={movie} />
 
                     <FormCard setSuccessFetch={setSuccessFetch} />
 
                     <AllReviews reviews={reviews} setDeleteReviewStatus={setDeleteReviewStatus} />
                 </>
             )}
-
         </>
     );
 };
