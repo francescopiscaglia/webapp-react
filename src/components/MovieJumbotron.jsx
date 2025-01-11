@@ -21,7 +21,6 @@ export default function MovieJumbotron({ movie }) {
                     <p className="card-text m-0"><small>Genre: </small><i>{movie.genre}</i></p>
                     <p className="card-text mb-3"><small>Release year: </small><i>{movie.release_year}</i></p>
                     <p className="card-text">{movie.abstract}</p>
-                    <p className="card-text mt-3"><small>Average: { }</small></p>
 
                 </div>
             </div>

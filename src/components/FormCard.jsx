@@ -62,7 +62,7 @@ export default function FormCard({ setSuccessFetch }) {
 
     // render
     return (
-        <section className="add-review container mb-5">
+        <section className="add-review container mb-3">
 
             <button
                 className="btn btn-outline-secondary mb-3"

@@ -14,6 +14,11 @@ export default function AboutPage() {
             >
                 <p className="card-text">Click on the logo to go back to Home</p>
                 <p className="card-text">This is a work in progress webApp, stay tuned.. 👀</p>
+
+                <div className="rotating-shapes">
+                    <div className="shape square"></div>
+                    <div className="shape triangle"></div>
+                </div>
             </Banner>
         </>
     );
