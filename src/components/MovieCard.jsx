@@ -17,7 +17,7 @@ export default function MovieCard({ movie }) {
                         <span className="text-muted">Genre:</span> <span>{movie.genre}</span>
                     </div>
                     <div className="year">
-                        <span className="text-muted">release year:</span> <span>{movie.release_year}</span>
+                        <span className="text-muted">Release year:</span> <span>{movie.release_year}</span>
                     </div>
                 </div>
 

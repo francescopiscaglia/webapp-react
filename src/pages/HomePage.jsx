@@ -79,7 +79,7 @@ export default function HomePage() {
                         {/* pop-up */}
                         <PopUps />
 
-                        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+                        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-3">
 
                             {movies || movies.lenght === 0 ?
                                 movies.map(movie => (

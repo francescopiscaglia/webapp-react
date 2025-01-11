@@ -8,7 +8,7 @@
 /* #region header */
 header {
     background-color: var(--var-header-bg);
-    z-index: 100;
+    z-index: 50000;
     position: sticky;
     top: 0;
 
