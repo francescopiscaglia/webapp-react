@@ -46,7 +46,19 @@ export default function SingleMovie() {
         <>
             {loader ? <Loader /> : (
                 <>
-                    <Banner pageTitle={movie.title} pageSubtitle={movie.director} pageDescription={movie.abstract} />
+                    {/* <Banner pageTitle={movie.title} pageSubtitle={movie.director} pageDescription={movie.abstract} /> */}
+
+                    <div className="jumbotron py-4">
+                        <div className="card">
+                            <img src="/inception-l.webp" className="card-img-top" alt="..." />
+                            <div className="card-body">
+                                <h5 className="card-title">{movie.title}</h5>
+                                <p className="card-text">{movie.director}</p>
+                                <p className="card-text">{movie.abstract}</p>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <FormCard setSuccessFetch={setSuccessFetch} />
 

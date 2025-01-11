@@ -9,8 +9,12 @@ export default function AppHeader() {
                     <strong>Bool Movies</strong>
                 </NavLink>
 
-                <NavLink to="/" className="text-decoration-none">
-                    <span>Categorie</span>
+                <NavLink to="/categories" className="text-decoration-none">
+                    <span>Categories</span>
+                </NavLink>
+
+                <NavLink to="/about" className="text-decoration-none">
+                    <span>About</span>
                 </NavLink>
 
             </nav>

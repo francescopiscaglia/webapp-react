@@ -5,9 +5,14 @@
     --jumbtron-bg: #fcfbf3;
 }
 
+img {
+    max-width: 100%;
+}
+
 /* #region header */
 header {
     background-color: var(--var-header-bg);
+    height: 60px;
     z-index: 50000;
     position: sticky;
     top: 0;
@@ -26,6 +31,8 @@ header {
 
 /* #region main */
 main {
+    min-height: calc(100vh - 60px - 70px);
+
     .banner {
         background-color: var(--jumbtron-bg);
         position: relative;
@@ -68,6 +75,12 @@ main {
             }
         }
 
+    }
+
+    .jumbotron {
+        width: 500px;
+        min-height: 200px;
+        margin: auto;
     }
 }
 
@@ -117,3 +130,10 @@ main {
 }
 
 /* #endregion main */
+
+/* #region footer */
+footer {
+    height: 70px;
+}
+
+/* #endregion footer */

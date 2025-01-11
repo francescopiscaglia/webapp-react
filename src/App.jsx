@@ -6,6 +6,8 @@ import HomePage from './pages/HomePage'
 import SingleMovie from './pages/SingleMovie'
 import NotFound from './pages/NotFound'
 import GlobalContext from './context/GlobalContext'
+import CategoriesPage from './pages/CategoriesPage'
+import AboutPage from "./pages/AboutPage"
 
 function App() {
 
@@ -29,6 +31,8 @@ function App() {
             <Route element={<AppLayout />}>
               <Route index element={<HomePage />}></Route>
               <Route path='/movie/:id' element={<SingleMovie />}></Route>
+              <Route path='/categories' element={<CategoriesPage />}></Route>
+              <Route path='/about' element={<AboutPage />}></Route>
               <Route path='*' element={<NotFound />}></Route>
             </Route>
 
