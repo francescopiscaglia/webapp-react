@@ -11,7 +11,7 @@ export default function MovieJumbotron({ movie }) {
             <div className="row g-0">
 
                 <div className="col-xs-6 col-md-8 thumb">
-                    <img src={moviesImgSrc} alt={movie.title} style={{ borderRadius: "5px 0 0 5px" }} />
+                    <img src={moviesImgSrc ? moviesImgSrc : movie.image} alt={movie.title} style={{ borderRadius: "5px 0 0 5px" }} />
                 </div>
 
                 <div className="col details p-3" style={{ border: "1px solid lightgray", borderRadius: "0 5px 5px 0" }}>

@@ -11,11 +11,12 @@ export default function MovieCard({ movie }) {
 
 
     return (
-        <div className="card">
+        <div className="card" style={{ height: "590px" }}>
             <img
-                src={moviesImgSrc}
+                src={moviesImgSrc ? moviesImgSrc : movie.image}
                 className="card-img-top"
                 alt={movie.title}
+                style={{ height: "350px" }}
             />
             <div className="card-body">
                 <h5 className="card-title">{movie.title}</h5>
